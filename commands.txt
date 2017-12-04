@@ -1,0 +1,136 @@
+install httpie package using following command
+
+pip install httpie
+
+Calling API using following commands
+
+http GET :5000/api/messages/1
+
+
+2>
+
+http GET :5000/api/messages/
+HTTP/1.0 200 OK
+Content-Length: 3
+Content-Type: application/json
+Date: Mon, 04 Dec 2017 15:19:46 GMT
+Server: Werkzeug/0.12.2 Python/2.7.13
+
+[]
+
+3: POST call
+
+http POST :5000/api/messages/ message="THis is sample message" duration=10 message_category="Informational"
+HTTP/1.0 201 CREATED
+Content-Length: 263
+Content-Type: application/json
+Date: Mon, 04 Dec 2017 15:23:58 GMT
+Server: Werkzeug/0.12.2 Python/2.7.13
+
+{
+    "creation_date": "Mon, 04 Dec 2017 15:23:58 -0000",
+    "duration": 10,
+    "idx": 1,
+    "message": "THis is sample message",
+    "message_category": "Informational",
+    "printed_once": false,
+    "printed_times": 0,
+    "uri": "/api/messages/1"
+}
+
+
+C:\Users\Ana-Data\Anaconda2\Scripts>
+
+GET call for same :
+
+http GET :5000/api/messages/1
+HTTP/1.0 200 OK
+Content-Length: 263
+Content-Type: application/json
+Date: Mon, 04 Dec 2017 15:24:39 GMT
+Server: Werkzeug/0.12.2 Python/2.7.13
+
+{
+    "creation_date": "Mon, 04 Dec 2017 15:23:58 -0000",
+    "duration": 10,
+    "idx": 1,
+    "message": "THis is sample message",
+    "message_category": "Informational",
+    "printed_once": false,
+    "printed_times": 0,
+    "uri": "/api/messages/1"
+}
+
+
+C:\Users\Ana-Data\Anaconda2\Scripts>
+
+
+GET all messages:
+
+http GET :5000/api/messages/
+HTTP/1.0 200 OK
+Content-Length: 927
+Content-Type: application/json
+Date: Mon, 04 Dec 2017 15:26:14 GMT
+Server: Werkzeug/0.12.2 Python/2.7.13
+
+[
+    {
+        "creation_date": "Mon, 04 Dec 2017 15:23:58 -0000",
+        "duration": 10,
+        "idx": 1,
+        "message": "THis is sample message",
+        "message_category": "Informational",
+        "printed_once": false,
+        "printed_times": 0,
+        "uri": "/api/messages/1"
+    },
+    {
+        "creation_date": "Mon, 04 Dec 2017 15:25:27 -0000",
+        "duration": 10,
+        "idx": 2,
+        "message": "THis is sample message again",
+        "message_category": "Informational",
+        "printed_once": false,
+        "printed_times": 0,
+        "uri": "/api/messages/2"
+    },
+    {
+        "creation_date": "Mon, 04 Dec 2017 15:26:03 -0000",
+        "duration": 10,
+        "idx": 3,
+        "message": "THis is sample message new",
+        "message_category": "Informational",
+        "printed_once": false,
+        "printed_times": 0,
+        "uri": "/api/messages/3"
+    }
+]
+
+PATCH operation to update message
+
+http PATCH :5000/api/messages/1 message="This is sample new message" duration=100 printed_once=True printed_times=2
+HTTP/1.0 200 OK
+Content-Length: 267
+Content-Type: application/json
+Date: Mon, 04 Dec 2017 15:53:10 GMT
+Server: Werkzeug/0.12.2 Python/2.7.13
+
+{
+    "creation_date": "Mon, 04 Dec 2017 15:52:44 -0000",
+    "duration": 100,
+    "idx": 1,
+    "message": "This is sample new message",
+    "message_category": "Informational",
+    "printed_once": true,
+    "printed_times": 2,
+    "uri": "/api/messages/1"
+}
+
+Marshmallow package:
+	Light weight library for converting complex data types
+	provides schemas to validate input data
+	deserilize input date to app-level objects
+	serilize app-level objects to python primitive types
+
+
